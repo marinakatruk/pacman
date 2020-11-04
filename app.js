@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let pacmanCurrentIndex = 519;
     squares[pacmanCurrentIndex].classList.add('pac-man');
 
+    //function to move pacman
+
     const movePacman = (e) => {
 
         squares[pacmanCurrentIndex].classList.remove('pac-man');
@@ -127,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const powerPelletEaten = () => {
         if (squares[pacmanCurrentIndex].classList.contains('power-pellet')) {
             score += 10;
+            scoreDisplay.innerHTML = score;
             ghosts.forEach(ghost => ghost.isScared = true);
             setTimeout(unScareGhosts, 10000);
             squares[pacmanCurrentIndex].classList.remove('power-pellet');
@@ -192,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost');
                 ghost.currentIndex = ghost.startIndex;
                 score += 100;
+                scoreDisplay.innerHTML = score;
                 squares[ghost.currentIndex].classList.add(ghost.className, 'ghost');
             }
 
@@ -207,8 +211,9 @@ document.addEventListener('DOMContentLoaded', () => {
         !squares[pacmanCurrentIndex].classList.contains('scared-ghost')) {
             ghosts.forEach(ghost => clearInterval(ghost.timerId));
             document.removeEventListener('keyup', movePacman);
-            // setTimeout(() => alert('Game Over!'), 500)
-            scoreDisplay.innerHTML = 'GAME OVER!'
+            grid.classList.add('stop-game');
+            const status = createGameStatus('game over!');
+            document.body.appendChild(status);
         }
     }
 
@@ -216,8 +221,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (score >= 260) {
             ghosts.forEach(ghost => clearInterval(ghost.timerId));
             document.removeEventListener('keyup', movePacman);
-            scoreDisplay.innerHTML = 'YOU WON!'
+            grid.classList.add('stop-game');
+            const status = createGameStatus('you won!');
+            status.classList.add('you-won');
+            document.body.appendChild(status);
         }
+    }
+
+    const createGameStatus = (text) => {
+        const elem = document.createElement('div');
+        elem.innerHTML = text;
+        elem.classList.add('game-over');
+        return elem;
     }
 
 

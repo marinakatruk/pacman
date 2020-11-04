@@ -1,9 +1,20 @@
+body {
+    height: 100vh;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    box-sizing: border-box;
+}
+
 .grid {
     display: flex;
     flex-wrap: wrap;
     width: 560px;
     height: 560px;
-    border: solid black;
+    border: dotted #6A5ACD;
 }
 
 .grid div {
@@ -12,38 +23,42 @@
 }
 
 .pac-dot {
-    background-color: green;
-    border: 5px solid white;
+    background-color: #FFEFD5;
+    border: 6px solid black;
     box-sizing: border-box;
 }
 
 .wall {
-    background-color: blue;
+    background-color: #6A5ACD;
 }
 
 .power-pellet {
-    background-color: green;
+    background-color: #FFEFD5;
     border-radius: 10px;
 }
 
 .blinky {
     background-color: red;
     border: 0px;
+    border-radius: 10px 10px 0 0;
 }
 
 .pinky {
     background-color: pink;
     border: 0px;
+    border-radius: 10px 10px 0 0;
 }
 
 .inky {
     background-color: cyan;
     border: 0px;
+    border-radius: 10px 10px 0 0;
 }
 
 .clyde {
     background-color: orange;
     border: 0px;
+    border-radius: 10px 10px 0 0;
 }
 
 .scared-ghost {
@@ -52,9 +67,40 @@
 }
 
 
-
-
 .pac-man {
     background-color: yellow;
     border-radius: 10px;
+}
+
+h3 {
+    color: rgba(255,239,213, 0.7);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    
+}
+
+h3 span {
+    margin-left: 10px;
+}
+
+.stop-game {
+    filter: brightness(40%);
+}
+
+.game-over {
+    position: absolute;
+    top: 45%;
+    z-index: 100;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-size: 45px;
+    text-transform: uppercase;
+    background-color: #FF4500;
+    color: white;
+    padding: 0 5px 0 5px;
+}
+
+.you-won {
+    background-color: #00FA9A;
 }
